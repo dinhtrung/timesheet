@@ -9,11 +9,13 @@ import java.util.List;
 /**
  * Spring Data JPA repository for the Feedback entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface FeedbackRepository extends JpaRepository<Feedback, Long>, JpaSpecificationExecutor<Feedback> {
 
     @Query("select feedback from Feedback feedback where feedback.createdBy.login = ?#{principal.username}")
     List<Feedback> findByCreatedByIsCurrentUser();
+
+    @Modifying
+	void deleteAllByRepliedToId(Long id);
 
 }

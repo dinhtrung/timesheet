@@ -12,7 +12,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 export class MeetingInvitationService {
 
     private resourceUrl = SERVER_API_URL + 'api/meeting-invitations';
-
+    public entity: MeetingInvitation;
+    public entities: MeetingInvitation[] = [];
+    public entityMap: any = {};
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
     create(meetingInvitation: MeetingInvitation): Observable<MeetingInvitation> {

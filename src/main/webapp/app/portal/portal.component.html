@@ -1,0 +1,70 @@
+<div class="row"><div class="col-md-12">
+  <div class="card-deck">
+    <div class="card bg-success text-white">
+      <div class="card-header"><i class="fa fa-calendar"></i> <small>Timesheet</small> this Week</div>
+      <div class="card-body">
+        <p class="card-text">Total Hours: 0 hours</p>
+        <p class="card-text">Status: PENDING</p>
+      </div>
+      <div class="card-footer bg-white">
+        <button type="button" (click)="newTimesheet()" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</button>
+        <button type="button" (click)="submitTimesheet()" class="btn btn-success pull-right"><i class="fa fa-send"></i> Submit</button>
+      </div>
+    </div>
+
+    <div class="card bg-info text-white">
+      <div class="card-header"><i class="fa fa-bookmark"></i> Meeting Invitation</div>
+      <div class="card-body">
+        <p class="card-text">Next Meeting: Jan 14 2017.</p>
+      </div>
+      <div class="card-footer bg-white">
+        <button type="button" (click)="acceptMeeting()" class="btn btn-success">Accept</button>
+        <button type="button" (click)="rejectMeeting()" class="btn btn-warning pull-right">Reject</button>
+      </div>
+    </div>
+
+    <div class="card bg-warning text-white">
+      <div class="card-header"><i class="fa fa-ticket"></i> Leave Requests</div>
+      <div class="card-body">
+        <p class="card-text">Remaining Requests: 3 / 12 this year</p>
+      </div>
+      <div class="card-footer bg-white">
+        <button type="button" (click)="newLeaveRequest()" class="btn btn-primary"><i class="fa fa-plane"></i> New Leave Request</button>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+
+<div class="row"><div class="col-md-12">
+  <h1><i class="fa fa-calendar"></i> <small>Timesheet</small> {{ timesheet }}</h1>
+  <mwl-calendar-week-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+</div></div>
+
+<div class="row"><div class="col-md-12">
+  <h1><i class="fa fa-plane"></i>Leave Requests</h1>
+  <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+</div></div>
+
+<div class="row"><div class="col-md-12">
+  <h1><i class="fa fa-calendar"></i>Meeting</h1>
+  <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+</div></div>

@@ -60,4 +60,13 @@ public class Authority implements Serializable {
             "name='" + name + '\'' +
             "}";
     }
+
+	public Authority(String name) {
+		super();
+		this.name = name;
+	}
+
+	public Authority() {
+		super();
+	}
 }

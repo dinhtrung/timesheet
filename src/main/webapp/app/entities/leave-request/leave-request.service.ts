@@ -12,7 +12,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 export class LeaveRequestService {
 
     private resourceUrl = SERVER_API_URL + 'api/leave-requests';
-
+    public entity: LeaveRequest;
+    public entities: LeaveRequest[] = [];
+    public entityMap: any = {};
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
     create(leaveRequest: LeaveRequest): Observable<LeaveRequest> {

@@ -67,6 +67,7 @@ public class FeedbackService {
      */
     public void delete(Long id) {
         log.debug("Request to delete Feedback : {}", id);
+        feedbackRepository.deleteAllByRepliedToId(id);
         feedbackRepository.delete(id);
     }
 }

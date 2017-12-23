@@ -12,7 +12,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 export class TimesheetService {
 
     private resourceUrl = SERVER_API_URL + 'api/timesheets';
-
+    public entity: Timesheet;
+    public entities: Timesheet[] = [];
+    public entityMap: any = {};
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
     create(timesheet: Timesheet): Observable<Timesheet> {

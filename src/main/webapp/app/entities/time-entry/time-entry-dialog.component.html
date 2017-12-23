@@ -44,7 +44,7 @@
             <label class="form-control-label" jhiTranslate="timesheetApp.timeEntry.jobCode" for="field_jobCode">Job Code</label>
             <select class="form-control" id="field_jobCode" name="jobCode" [(ngModel)]="timeEntry.jobCode" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="jobCodeOption.id === timeEntry.jobCode?.id ? timeEntry.jobCode : jobCodeOption" *ngFor="let jobCodeOption of jobcodes; trackBy: trackJobCodeById">{{jobCodeOption.id}}</option>
+                <option [ngValue]="jobCodeOption.id === timeEntry.jobCode?.id ? timeEntry.jobCode : jobCodeOption" *ngFor="let jobCodeOption of jobcodes; trackBy: trackJobCodeById">{{jobCodeOption.name}}</option>
             </select>
         </div>
     </div>

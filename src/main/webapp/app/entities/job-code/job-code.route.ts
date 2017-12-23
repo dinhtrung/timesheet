@@ -32,7 +32,7 @@ export const jobCodeRoute: Routes = [
             'pagingParams': JobCodeResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'timesheetApp.jobCode.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const jobCodeRoute: Routes = [
         path: 'job-code/:id',
         component: JobCodeDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'timesheetApp.jobCode.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -52,7 +52,7 @@ export const jobCodePopupRoute: Routes = [
         path: 'job-code-new',
         component: JobCodePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'timesheetApp.jobCode.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -62,7 +62,7 @@ export const jobCodePopupRoute: Routes = [
         path: 'job-code/:id/edit',
         component: JobCodePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'timesheetApp.jobCode.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -72,7 +72,7 @@ export const jobCodePopupRoute: Routes = [
         path: 'job-code/:id/delete',
         component: JobCodeDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'timesheetApp.jobCode.home.title'
         },
         canActivate: [UserRouteAccessService],

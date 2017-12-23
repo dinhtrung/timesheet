@@ -14,7 +14,7 @@ import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
 // jhipster-needle-angular-add-module-import JHipster will add new module here
-
+import { TimesheetPortalModule } from './portal/portal.module';
 import {
     JhiMainComponent,
     NavbarComponent,
@@ -32,6 +32,7 @@ import {
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
         TimesheetSharedModule,
         TimesheetHomeModule,
+        TimesheetPortalModule,
         TimesheetAdminModule,
         TimesheetAccountModule,
         TimesheetEntityModule,

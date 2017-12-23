@@ -8,6 +8,7 @@
     "node_modules"
   ],
   "dependencies": {
+    "@angular/animations": "^5.1.2",
     "@angular/common": "5.1.0",
     "@angular/compiler": "5.1.0",
     "@angular/core": "5.1.0",
@@ -17,20 +18,22 @@
     "@angular/platform-browser-dynamic": "5.1.0",
     "@angular/router": "5.1.0",
     "@ng-bootstrap/ng-bootstrap": "1.0.0-beta.7",
+    "angular-calendar": "^0.22.2",
     "bootstrap": "4.0.0-beta.2",
     "core-js": "2.4.1",
     "font-awesome": "4.7.0",
     "jquery": "3.2.1",
+    "moment": "^2.20.1",
     "ng-jhipster": "0.3.4",
     "ngx-cookie": "2.0.1",
     "ngx-infinite-scroll": "0.5.1",
     "ngx-webstorage": "2.0.1",
     "reflect-metadata": "0.1.10",
     "rxjs": "5.5.5",
-    "swagger-ui": "2.2.10",
     "sockjs-client": "1.1.4",
-    "webstomp-client": "1.0.6",
+    "swagger-ui": "2.2.10",
     "tether": "1.4.0",
+    "webstomp-client": "1.0.6",
     "zone.js": "0.8.16"
   },
   "devDependencies": {
@@ -75,16 +78,16 @@
     "tslint": "5.5.0",
     "tslint-loader": "3.5.3",
     "typescript": "2.5.3",
-    "xml2js": "0.4.17",
     "uglifyjs-webpack-plugin": "1.1.2",
+    "web-app-manifest-loader": "0.1.1",
     "webpack": "3.10.0",
     "webpack-dev-server": "2.9.5",
     "webpack-merge": "4.1.1",
     "webpack-notifier": "1.5.0",
     "webpack-visualizer-plugin": "0.1.11",
-    "web-app-manifest-loader": "0.1.1",
     "workbox-webpack-plugin": "2.1.2",
-    "write-file-webpack-plugin": "4.1.0"
+    "write-file-webpack-plugin": "4.1.0",
+    "xml2js": "0.4.17"
   },
   "engines": {
     "node": ">=6.9.0"

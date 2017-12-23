@@ -10,7 +10,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 export class JobCodeService {
 
     private resourceUrl = SERVER_API_URL + 'api/job-codes';
-
+    public entity: JobCode;
+    public entities: JobCode[] = [];
+    public entityMap: any = {};
     constructor(private http: Http) { }
 
     create(jobCode: JobCode): Observable<JobCode> {

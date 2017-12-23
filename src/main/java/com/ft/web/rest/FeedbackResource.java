@@ -1,8 +1,12 @@
 package com.ft.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.ft.domain.Authority;
 import com.ft.domain.Feedback;
+import com.ft.domain.User;
+import com.ft.security.AuthoritiesConstants;
 import com.ft.service.FeedbackService;
+import com.ft.service.UserService;
 import com.ft.web.rest.errors.BadRequestAlertException;
 import com.ft.web.rest.util.HeaderUtil;
 import com.ft.web.rest.util.PaginationUtil;
@@ -11,6 +15,7 @@ import com.ft.service.FeedbackQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -20,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +44,9 @@ public class FeedbackResource {
 
     private final FeedbackQueryService feedbackQueryService;
 
+    @Autowired
+    private UserService userService;
+
     public FeedbackResource(FeedbackService feedbackService, FeedbackQueryService feedbackQueryService) {
         this.feedbackService = feedbackService;
         this.feedbackQueryService = feedbackQueryService;
@@ -54,6 +62,12 @@ public class FeedbackResource {
     @PostMapping("/feedbacks")
     @Timed
     public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback) throws URISyntaxException {
+    	User currentUser = userService.getUserWithAuthorities().get();
+    	if (!currentUser.getAuthorities().contains(new Authority(AuthoritiesConstants.ADMIN))) {
+    		feedback
+    			.createdAt(ZonedDateTime.now())
+    			.createdBy(currentUser);
+    	}
         log.debug("REST request to save Feedback : {}", feedback);
         if (feedback.getId() != null) {
             throw new BadRequestAlertException("A new feedback cannot already have an ID", ENTITY_NAME, "idexists");

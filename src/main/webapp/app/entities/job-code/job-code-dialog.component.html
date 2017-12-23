@@ -26,7 +26,7 @@
         <div class="form-group">
             <label jhiTranslate="timesheetApp.jobCode.users" for="field_users">Users</label>
             <select class="form-control" id="field_users" multiple name="users" [(ngModel)]="jobCode.users">
-                <option [ngValue]="getSelected(jobCode.users, userOption)" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                <option [ngValue]="getSelected(jobCode.users, userOption)" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.email}}</option>
             </select>
         </div>
     </div>

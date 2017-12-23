@@ -12,7 +12,9 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 export class TimeEntryService {
 
     private resourceUrl = SERVER_API_URL + 'api/time-entries';
-
+    public entity: TimeEntry;
+    public entities: TimeEntry[] = [];
+    public entityMap: any = {};
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
     create(timeEntry: TimeEntry): Observable<TimeEntry> {
