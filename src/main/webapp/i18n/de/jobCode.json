@@ -1,0 +1,23 @@
+{
+    "timesheetApp": {
+        "jobCode" : {
+            "home": {
+                "title": "Job Codes",
+                "createLabel": "Job Code erstellen",
+                "createOrEditLabel": "Job Code erstellen oder bearbeiten"
+            },
+            "created": "Job Code erstellt mit ID {{ param }}",
+            "updated": "Job Code aktualisiert mit ID {{ param }}",
+            "deleted": "Job Code gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Job Code {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Job Code"
+            },
+            "name": "Name",
+            "description": "Description",
+            "users": "Users"
+        }
+    }
+}

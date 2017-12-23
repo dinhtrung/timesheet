@@ -1,0 +1,25 @@
+{
+    "timesheetApp": {
+        "timeEntry" : {
+            "home": {
+                "title": "Time Entries",
+                "createLabel": "Thêm mới một Time Entry",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Time Entry"
+            },
+            "created": "Một Time Entry mới được tạo với định danh {{ param }}",
+            "updated": "Một Time Entry cập nhật với định danh {{ param }}",
+            "deleted": "Một Time Entry đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Time Entry {{ id }}?"
+            },
+            "detail": {
+                "title": "Time Entry"
+            },
+            "date": "Date",
+            "duration": "Duration",
+            "description": "Description",
+            "timesheet": "Timesheet",
+            "jobCode": "Job Code"
+        }
+    }
+}

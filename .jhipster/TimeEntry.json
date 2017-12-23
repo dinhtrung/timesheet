@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "timesheet",
+            "otherEntityName": "timesheet",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "jobCode",
+            "otherEntityName": "jobCode",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "changelogDate": "20171223120903",
+    "entityTableName": "time_entry",
+    "dto": "no",
+    "pagination": "pager",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

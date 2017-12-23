@@ -1,0 +1,26 @@
+{
+    "timesheetApp": {
+        "feedback" : {
+            "home": {
+                "title": "Feedbacks",
+                "createLabel": "Maak een nieuwe Feedback",
+                "createOrEditLabel": "Maak of wijzig een Feedback"
+            },
+            "created": "A new Feedback is created with identifier {{ param }}",
+            "updated": "A Feedback is updated with identifier {{ param }}",
+            "deleted": "A Feedback is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Feedback {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Feedback"
+            },
+            "createdAt": "Created At",
+            "name": "Name",
+            "note": "Note",
+            "repliedTo": "Replied To",
+            "timesheet": "Timesheet",
+            "createdBy": "Created By"
+        }
+    }
+}

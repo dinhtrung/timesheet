@@ -1,0 +1,66 @@
+
+<div *ngIf="leaveRequest">
+    <h2><span jhiTranslate="timesheetApp.leaveRequest.detail.title">Leave Request</span> {{leaveRequest.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.name">Name</span></dt>
+        <dd>
+            <span>{{leaveRequest.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.note">Note</span></dt>
+        <dd>
+            <span>{{leaveRequest.note}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.allDay">All Day</span></dt>
+        <dd>
+            <span>{{leaveRequest.allDay}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{leaveRequest.startDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.endDate">End Date</span></dt>
+        <dd>
+            <span>{{leaveRequest.endDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.number">Number</span></dt>
+        <dd>
+            <span>{{leaveRequest.number}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.state">State</span></dt>
+        <dd>
+            <span jhiTranslate="{{'timesheetApp.ReviewState.' + leaveRequest.state}}">{{leaveRequest.state}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{leaveRequest.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.approvalNote">Approval Note</span></dt>
+        <dd>
+            <span>{{leaveRequest.approvalNote}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.owner">Owner</span></dt>
+        <dd>
+            {{leaveRequest.owner?.id}}
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.leaveRequest.approvedBy">Approved By</span></dt>
+        <dd>
+            {{leaveRequest.approvedBy?.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'leave-request/'+ leaveRequest.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

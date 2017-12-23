@@ -1,0 +1,44 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMeetingInvitationLabel" jhiTranslate="timesheetApp.meetingInvitation.home.createOrEditLabel">Create or edit a Meeting Invitation</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!meetingInvitation.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="meetingInvitation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.meetingInvitation.decidedAt" for="field_decidedAt">Decided At</label>
+            <div class="d-flex">
+                <input id="field_decidedAt" type="datetime-local" class="form-control" name="decidedAt" [(ngModel)]="meetingInvitation.decidedAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.meetingInvitation.accepted" for="field_accepted">Accepted</label>
+            <input type="checkbox" class="form-control" name="accepted" id="field_accepted"
+                [(ngModel)]="meetingInvitation.accepted" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.meetingInvitation.meeting" for="field_meeting">Meeting</label>
+            <select class="form-control" id="field_meeting" name="meeting" [(ngModel)]="meetingInvitation.meeting" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="meetingOption.id === meetingInvitation.meeting?.id ? meetingInvitation.meeting : meetingOption" *ngFor="let meetingOption of meetings; trackBy: trackMeetingById">{{meetingOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

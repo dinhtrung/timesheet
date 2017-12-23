@@ -1,0 +1,28 @@
+{
+    "timesheetApp": {
+        "timesheet" : {
+            "home": {
+                "title": "Timesheets",
+                "createLabel": "Timesheet erstellen",
+                "createOrEditLabel": "Timesheet erstellen oder bearbeiten"
+            },
+            "created": "Timesheet erstellt mit ID {{ param }}",
+            "updated": "Timesheet aktualisiert mit ID {{ param }}",
+            "deleted": "Timesheet gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Timesheet {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Timesheet"
+            },
+            "approvedAt": "Approved At",
+            "approvalNote": "Approval Note",
+            "year": "Year",
+            "week": "Week",
+            "state": "State",
+            "comment": "Comment",
+            "owner": "Owner",
+            "approvedBy": "Approved By"
+        }
+    }
+}

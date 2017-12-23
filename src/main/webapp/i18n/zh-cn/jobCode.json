@@ -1,0 +1,23 @@
+{
+    "timesheetApp": {
+        "jobCode" : {
+            "home": {
+                "title": "Job Codes",
+                "createLabel": "创建新 Job Code",
+                "createOrEditLabel": "创建或编辑 Job Code"
+            },
+            "created": "Job Code {{ param }} 创建成功",
+            "updated": "Job Code {{ param }} 更新成功",
+            "deleted": "Job Code {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Job Code {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Job Code"
+            },
+            "name": "Name",
+            "description": "Description",
+            "users": "Users"
+        }
+    }
+}

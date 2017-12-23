@@ -1,0 +1,36 @@
+
+<div *ngIf="meetingInvitation">
+    <h2><span jhiTranslate="timesheetApp.meetingInvitation.detail.title">Meeting Invitation</span> {{meetingInvitation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="timesheetApp.meetingInvitation.decidedAt">Decided At</span></dt>
+        <dd>
+            <span>{{meetingInvitation.decidedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.meetingInvitation.accepted">Accepted</span></dt>
+        <dd>
+            <span>{{meetingInvitation.accepted}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.meetingInvitation.meeting">Meeting</span></dt>
+        <dd>
+            <div *ngIf="meetingInvitation.meeting">
+                <a [routerLink]="['/meeting', meetingInvitation.meeting?.id]">{{meetingInvitation.meeting?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'meeting-invitation/'+ meetingInvitation.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

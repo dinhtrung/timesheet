@@ -1,0 +1,23 @@
+{
+    "timesheetApp": {
+        "jobCode" : {
+            "home": {
+                "title": "JobCodes",
+                "createLabel": "Job Code を追加",
+                "createOrEditLabel": "Job Codeを追加または編集"
+            },
+            "created": "A new Job Code is created with identifier {{ param }}",
+            "updated": "A Job Code is updated with identifier {{ param }}",
+            "deleted": "A Job Code is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Job Code {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Job Code"
+            },
+            "name": "Name",
+            "description": "Description",
+            "users": "Users"
+        }
+    }
+}

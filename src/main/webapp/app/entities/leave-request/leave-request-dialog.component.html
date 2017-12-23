@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLeaveRequestLabel" jhiTranslate="timesheetApp.leaveRequest.home.createOrEditLabel">Create or edit a Leave Request</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!leaveRequest.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="leaveRequest.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="leaveRequest.name" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.note" for="field_note">Note</label>
+            <textarea class="form-control" name="note" id="field_note"
+                [(ngModel)]="leaveRequest.note" ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.allDay" for="field_allDay">All Day</label>
+            <input type="checkbox" class="form-control" name="allDay" id="field_allDay"
+                [(ngModel)]="leaveRequest.allDay" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.startDate" for="field_startDate">Start Date</label>
+            <div class="d-flex">
+                <input id="field_startDate" type="datetime-local" class="form-control" name="startDate" [(ngModel)]="leaveRequest.startDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.endDate" for="field_endDate">End Date</label>
+            <div class="d-flex">
+                <input id="field_endDate" type="datetime-local" class="form-control" name="endDate" [(ngModel)]="leaveRequest.endDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.number" for="field_number">Number</label>
+            <input type="number" class="form-control" name="number" id="field_number"
+                [(ngModel)]="leaveRequest.number" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.state" for="field_state">State</label>
+            <select class="form-control" name="state" [(ngModel)]="leaveRequest.state" id="field_state" >
+                <option value="REJECTED">{{'timesheetApp.ReviewState.REJECTED' | translate}}</option>
+                <option value="PENDING">{{'timesheetApp.ReviewState.PENDING' | translate}}</option>
+                <option value="APPROVED">{{'timesheetApp.ReviewState.APPROVED' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.updatedAt" for="field_updatedAt">Updated At</label>
+            <div class="d-flex">
+                <input id="field_updatedAt" type="datetime-local" class="form-control" name="updatedAt" [(ngModel)]="leaveRequest.updatedAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.approvalNote" for="field_approvalNote">Approval Note</label>
+            <textarea class="form-control" name="approvalNote" id="field_approvalNote"
+                [(ngModel)]="leaveRequest.approvalNote" ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.owner" for="field_owner">Owner</label>
+            <select class="form-control" id="field_owner" name="owner" [(ngModel)]="leaveRequest.owner" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === leaveRequest.owner?.id ? leaveRequest.owner : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.leaveRequest.approvedBy" for="field_approvedBy">Approved By</label>
+            <select class="form-control" id="field_approvedBy" name="approvedBy" [(ngModel)]="leaveRequest.approvedBy" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === leaveRequest.approvedBy?.id ? leaveRequest.approvedBy : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

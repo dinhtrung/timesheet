@@ -1,0 +1,26 @@
+{
+    "timesheetApp": {
+        "feedback" : {
+            "home": {
+                "title": "Feedbacks",
+                "createLabel": "创建新 Feedback",
+                "createOrEditLabel": "创建或编辑 Feedback"
+            },
+            "created": "Feedback {{ param }} 创建成功",
+            "updated": "Feedback {{ param }} 更新成功",
+            "deleted": "Feedback {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Feedback {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Feedback"
+            },
+            "createdAt": "Created At",
+            "name": "Name",
+            "note": "Note",
+            "repliedTo": "Replied To",
+            "timesheet": "Timesheet",
+            "createdBy": "Created By"
+        }
+    }
+}

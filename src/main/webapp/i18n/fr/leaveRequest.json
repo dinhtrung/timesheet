@@ -1,0 +1,31 @@
+{
+    "timesheetApp": {
+        "leaveRequest" : {
+            "home": {
+                "title": "LeaveRequests",
+                "createLabel": "Créer un nouveau Leave Request",
+                "createOrEditLabel": "Créer ou éditer un Leave Request"
+            },
+            "created": "Un nouveau Leave Request a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Leave Request avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Leave Request avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Leave Request {{ id }} ?"
+            },
+            "detail": {
+                "title": "Leave Request"
+            },
+            "name": "Name",
+            "note": "Note",
+            "allDay": "All Day",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "number": "Number",
+            "state": "State",
+            "updatedAt": "Updated At",
+            "approvalNote": "Approval Note",
+            "owner": "Owner",
+            "approvedBy": "Approved By"
+        }
+    }
+}

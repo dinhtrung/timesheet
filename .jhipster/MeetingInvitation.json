@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "meeting",
+            "otherEntityName": "meeting",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "decidedAt",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "accepted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20171223120901",
+    "entityTableName": "meeting_invitation",
+    "dto": "no",
+    "pagination": "pager",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

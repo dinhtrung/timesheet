@@ -1,0 +1,74 @@
+/** Time Management app for Small and Medium Company **/
+enum ReviewState {
+  REJECTED, PENDING, APPROVED
+}
+entity JobCode {
+  name String,
+  description TextBlob
+}
+
+entity LeaveRequest {
+  name String,
+  note TextBlob,
+  allDay Boolean,
+  startDate ZonedDateTime,
+  endDate ZonedDateTime,
+  number Integer,
+  state ReviewState,
+  updatedAt ZonedDateTime,
+  approvalNote TextBlob,
+}
+
+entity MeetingInvitation {
+  decidedAt ZonedDateTime,
+  accepted Boolean,
+}
+
+entity Meeting {
+  name String,
+  note TextBlob,
+  allDay Boolean,
+  startDate ZonedDateTime,
+  endDate ZonedDateTime,
+}
+
+
+entity TimeEntry {
+  date LocalDate,
+  duration Double, // minutes
+  description TextBlob,
+}
+
+entity Timesheet {
+  approvedAt ZonedDateTime,
+  approvalNote TextBlob,
+  year Integer max(9999),
+  week Integer,
+  state ReviewState,
+  comment TextBlob,
+}
+entity Feedback {
+  createdAt ZonedDateTime,
+  name String,
+  note TextBlob
+}
+
+relationship ManyToOne {
+  Timesheet{owner} to User,
+  Timesheet{approvedBy} to User,
+  TimeEntry{timesheet} to Timesheet,
+  TimeEntry{jobCode} to JobCode,
+  Meeting{user} to User,
+  MeetingInvitation{meeting} to Meeting,
+  LeaveRequest{owner} to User,
+  LeaveRequest{approvedBy} to User,
+  Feedback{repliedTo} to Feedback,
+  Feedback{timesheet} to Timesheet,
+  Feedback{createdBy} to User
+}
+
+relationship ManyToMany {
+  JobCode{users} to User
+}
+service all with serviceClass
+paginate all with pager

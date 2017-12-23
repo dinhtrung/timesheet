@@ -1,0 +1,25 @@
+{
+    "timesheetApp": {
+        "timeEntry" : {
+            "home": {
+                "title": "Time Entries",
+                "createLabel": "创建新 Time Entry",
+                "createOrEditLabel": "创建或编辑 Time Entry"
+            },
+            "created": "Time Entry {{ param }} 创建成功",
+            "updated": "Time Entry {{ param }} 更新成功",
+            "deleted": "Time Entry {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Time Entry {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Time Entry"
+            },
+            "date": "Date",
+            "duration": "Duration",
+            "description": "Description",
+            "timesheet": "Timesheet",
+            "jobCode": "Job Code"
+        }
+    }
+}

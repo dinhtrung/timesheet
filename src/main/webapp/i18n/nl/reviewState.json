@@ -1,0 +1,10 @@
+{
+    "timesheetApp": {
+        "ReviewState" : {
+            "null": "",
+            "REJECTED": "REJECTED",
+            "PENDING": "PENDING",
+            "APPROVED": "APPROVED"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "timesheetApp": {
+        "meeting" : {
+            "home": {
+                "title": "Meetings",
+                "createLabel": "Thêm mới một Meeting",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Meeting"
+            },
+            "created": "Một Meeting mới được tạo với định danh {{ param }}",
+            "updated": "Một Meeting cập nhật với định danh {{ param }}",
+            "deleted": "Một Meeting đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Meeting {{ id }}?"
+            },
+            "detail": {
+                "title": "Meeting"
+            },
+            "name": "Name",
+            "note": "Note",
+            "allDay": "All Day",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "user": "User"
+        }
+    }
+}

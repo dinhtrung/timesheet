@@ -1,0 +1,26 @@
+{
+    "timesheetApp": {
+        "feedback" : {
+            "home": {
+                "title": "Feedbacks",
+                "createLabel": "Feedback erstellen",
+                "createOrEditLabel": "Feedback erstellen oder bearbeiten"
+            },
+            "created": "Feedback erstellt mit ID {{ param }}",
+            "updated": "Feedback aktualisiert mit ID {{ param }}",
+            "deleted": "Feedback gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Feedback {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Feedback"
+            },
+            "createdAt": "Created At",
+            "name": "Name",
+            "note": "Note",
+            "repliedTo": "Replied To",
+            "timesheet": "Timesheet",
+            "createdBy": "Created By"
+        }
+    }
+}

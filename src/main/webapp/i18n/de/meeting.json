@@ -1,0 +1,26 @@
+{
+    "timesheetApp": {
+        "meeting" : {
+            "home": {
+                "title": "Meetings",
+                "createLabel": "Meeting erstellen",
+                "createOrEditLabel": "Meeting erstellen oder bearbeiten"
+            },
+            "created": "Meeting erstellt mit ID {{ param }}",
+            "updated": "Meeting aktualisiert mit ID {{ param }}",
+            "deleted": "Meeting gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Meeting {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Meeting"
+            },
+            "name": "Name",
+            "note": "Note",
+            "allDay": "All Day",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "user": "User"
+        }
+    }
+}

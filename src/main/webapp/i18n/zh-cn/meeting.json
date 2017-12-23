@@ -1,0 +1,26 @@
+{
+    "timesheetApp": {
+        "meeting" : {
+            "home": {
+                "title": "Meetings",
+                "createLabel": "创建新 Meeting",
+                "createOrEditLabel": "创建或编辑 Meeting"
+            },
+            "created": "Meeting {{ param }} 创建成功",
+            "updated": "Meeting {{ param }} 更新成功",
+            "deleted": "Meeting {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Meeting {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Meeting"
+            },
+            "name": "Name",
+            "note": "Note",
+            "allDay": "All Day",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "user": "User"
+        }
+    }
+}

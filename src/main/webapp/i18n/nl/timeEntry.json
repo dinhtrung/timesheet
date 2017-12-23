@@ -1,0 +1,25 @@
+{
+    "timesheetApp": {
+        "timeEntry" : {
+            "home": {
+                "title": "Time Entries",
+                "createLabel": "Maak een nieuwe Time Entry",
+                "createOrEditLabel": "Maak of wijzig een Time Entry"
+            },
+            "created": "A new Time Entry is created with identifier {{ param }}",
+            "updated": "A Time Entry is updated with identifier {{ param }}",
+            "deleted": "A Time Entry is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Time Entry {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Time Entry"
+            },
+            "date": "Date",
+            "duration": "Duration",
+            "description": "Description",
+            "timesheet": "Timesheet",
+            "jobCode": "Job Code"
+        }
+    }
+}

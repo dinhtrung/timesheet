@@ -1,0 +1,26 @@
+{
+    "timesheetApp": {
+        "meeting" : {
+            "home": {
+                "title": "Meetings",
+                "createLabel": "Meeting を追加",
+                "createOrEditLabel": "Meetingを追加または編集"
+            },
+            "created": "A new Meeting is created with identifier {{ param }}",
+            "updated": "A Meeting is updated with identifier {{ param }}",
+            "deleted": "A Meeting is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Meeting {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Meeting"
+            },
+            "name": "Name",
+            "note": "Note",
+            "allDay": "All Day",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "user": "User"
+        }
+    }
+}

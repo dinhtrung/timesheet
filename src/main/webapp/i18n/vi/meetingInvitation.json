@@ -1,0 +1,23 @@
+{
+    "timesheetApp": {
+        "meetingInvitation" : {
+            "home": {
+                "title": "Meeting Invitations",
+                "createLabel": "Thêm mới một Meeting Invitation",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Meeting Invitation"
+            },
+            "created": "Một Meeting Invitation mới được tạo với định danh {{ param }}",
+            "updated": "Một Meeting Invitation cập nhật với định danh {{ param }}",
+            "deleted": "Một Meeting Invitation đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Meeting Invitation {{ id }}?"
+            },
+            "detail": {
+                "title": "Meeting Invitation"
+            },
+            "decidedAt": "Decided At",
+            "accepted": "Accepted",
+            "meeting": "Meeting"
+        }
+    }
+}

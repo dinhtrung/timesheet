@@ -1,0 +1,79 @@
+<div>
+    <h2>
+        <span jhiTranslate="timesheetApp.meeting.home.title">Meetings</span>
+        <button class="btn btn-primary float-right jh-create-entity create-meeting" [routerLink]="['/', { outlets: { popup: ['meeting-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="timesheetApp.meeting.home.createLabel">
+            Create new Meeting
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="meetings">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="timesheetApp.meeting.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="note"><span jhiTranslate="timesheetApp.meeting.note">Note</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="allDay"><span jhiTranslate="timesheetApp.meeting.allDay">All Day</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="startDate"><span jhiTranslate="timesheetApp.meeting.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="endDate"><span jhiTranslate="timesheetApp.meeting.endDate">End Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.id"><span jhiTranslate="timesheetApp.meeting.user">User</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let meeting of meetings ;trackBy: trackId">
+                <td><a [routerLink]="['../meeting', meeting.id ]">{{meeting.id}}</a></td>
+                <td>{{meeting.name}}</td>
+                <td>{{meeting.note}}</td>
+                <td>{{meeting.allDay}}</td>
+                <td>{{meeting.startDate | date:'medium'}}</td>
+                <td>{{meeting.endDate | date:'medium'}}</td>
+                <td>
+                    {{meeting.user?.id}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../meeting', meeting.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'meeting/'+ meeting.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'meeting/'+ meeting.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Pager is not implemented yet, so this is normal pagination instead -->
+    <div *ngIf="meetings && meetings.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

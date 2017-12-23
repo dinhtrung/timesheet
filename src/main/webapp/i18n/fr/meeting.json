@@ -1,0 +1,26 @@
+{
+    "timesheetApp": {
+        "meeting" : {
+            "home": {
+                "title": "Meetings",
+                "createLabel": "Créer un nouveau Meeting",
+                "createOrEditLabel": "Créer ou éditer un Meeting"
+            },
+            "created": "Un nouveau Meeting a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Meeting avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Meeting avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Meeting {{ id }} ?"
+            },
+            "detail": {
+                "title": "Meeting"
+            },
+            "name": "Name",
+            "note": "Note",
+            "allDay": "All Day",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "user": "User"
+        }
+    }
+}

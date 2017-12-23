@@ -1,0 +1,25 @@
+{
+    "timesheetApp": {
+        "timeEntry" : {
+            "home": {
+                "title": "TimeEntries",
+                "createLabel": "Créer un nouveau Time Entry",
+                "createOrEditLabel": "Créer ou éditer un Time Entry"
+            },
+            "created": "Un nouveau Time Entry a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Time Entry avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Time Entry avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Time Entry {{ id }} ?"
+            },
+            "detail": {
+                "title": "Time Entry"
+            },
+            "date": "Date",
+            "duration": "Duration",
+            "description": "Description",
+            "timesheet": "Timesheet",
+            "jobCode": "Job Code"
+        }
+    }
+}

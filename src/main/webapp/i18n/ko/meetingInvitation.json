@@ -1,0 +1,23 @@
+{
+    "timesheetApp": {
+        "meetingInvitation" : {
+            "home": {
+                "title": "Meeting Invitations",
+                "createLabel": "Create a new Meeting Invitation",
+                "createOrEditLabel": "Create or edit a Meeting Invitation"
+            },
+            "created": "A new Meeting Invitation is created with identifier {{ param }}",
+            "updated": "A Meeting Invitation is updated with identifier {{ param }}",
+            "deleted": "A Meeting Invitation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Meeting Invitation {{ id }}?"
+            },
+            "detail": {
+                "title": "Meeting Invitation"
+            },
+            "decidedAt": "Decided At",
+            "accepted": "Accepted",
+            "meeting": "Meeting"
+        }
+    }
+}

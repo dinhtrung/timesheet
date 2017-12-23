@@ -1,0 +1,28 @@
+{
+    "timesheetApp": {
+        "timesheet" : {
+            "home": {
+                "title": "Timesheets",
+                "createLabel": "Timesheet を追加",
+                "createOrEditLabel": "Timesheetを追加または編集"
+            },
+            "created": "A new Timesheet is created with identifier {{ param }}",
+            "updated": "A Timesheet is updated with identifier {{ param }}",
+            "deleted": "A Timesheet is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Timesheet {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Timesheet"
+            },
+            "approvedAt": "Approved At",
+            "approvalNote": "Approval Note",
+            "year": "Year",
+            "week": "Week",
+            "state": "State",
+            "comment": "Comment",
+            "owner": "Owner",
+            "approvedBy": "Approved By"
+        }
+    }
+}

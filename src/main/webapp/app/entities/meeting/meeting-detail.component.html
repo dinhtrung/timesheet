@@ -1,0 +1,46 @@
+
+<div *ngIf="meeting">
+    <h2><span jhiTranslate="timesheetApp.meeting.detail.title">Meeting</span> {{meeting.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="timesheetApp.meeting.name">Name</span></dt>
+        <dd>
+            <span>{{meeting.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.meeting.note">Note</span></dt>
+        <dd>
+            <span>{{meeting.note}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.meeting.allDay">All Day</span></dt>
+        <dd>
+            <span>{{meeting.allDay}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.meeting.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{meeting.startDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.meeting.endDate">End Date</span></dt>
+        <dd>
+            <span>{{meeting.endDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.meeting.user">User</span></dt>
+        <dd>
+            {{meeting.user?.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'meeting/'+ meeting.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

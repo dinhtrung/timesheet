@@ -1,0 +1,28 @@
+{
+    "timesheetApp": {
+        "timesheet" : {
+            "home": {
+                "title": "Timesheets",
+                "createLabel": "Créer un nouveau Timesheet",
+                "createOrEditLabel": "Créer ou éditer un Timesheet"
+            },
+            "created": "Un nouveau Timesheet a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Timesheet avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Timesheet avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Timesheet {{ id }} ?"
+            },
+            "detail": {
+                "title": "Timesheet"
+            },
+            "approvedAt": "Approved At",
+            "approvalNote": "Approval Note",
+            "year": "Year",
+            "week": "Week",
+            "state": "State",
+            "comment": "Comment",
+            "owner": "Owner",
+            "approvedBy": "Approved By"
+        }
+    }
+}

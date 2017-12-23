@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "owner",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "approvedBy",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "approvedAt",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "approvalNote",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "max"
+            ],
+            "fieldValidateRulesMax": 9999
+        },
+        {
+            "fieldName": "week",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "ReviewState",
+            "fieldValues": "REJECTED,PENDING,APPROVED"
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "changelogDate": "20171223120904",
+    "entityTableName": "timesheet",
+    "dto": "no",
+    "pagination": "pager",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true
+}

@@ -1,0 +1,23 @@
+{
+    "timesheetApp": {
+        "meetingInvitation" : {
+            "home": {
+                "title": "MeetingInvitations",
+                "createLabel": "Meeting Invitation を追加",
+                "createOrEditLabel": "Meeting Invitationを追加または編集"
+            },
+            "created": "A new Meeting Invitation is created with identifier {{ param }}",
+            "updated": "A Meeting Invitation is updated with identifier {{ param }}",
+            "deleted": "A Meeting Invitation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Meeting Invitation {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Meeting Invitation"
+            },
+            "decidedAt": "Decided At",
+            "accepted": "Accepted",
+            "meeting": "Meeting"
+        }
+    }
+}

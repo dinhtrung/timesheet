@@ -1,0 +1,63 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFeedbackLabel" jhiTranslate="timesheetApp.feedback.home.createOrEditLabel">Create or edit a Feedback</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!feedback.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="feedback.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.feedback.createdAt" for="field_createdAt">Created At</label>
+            <div class="d-flex">
+                <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="feedback.createdAt"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.feedback.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="feedback.name" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.feedback.note" for="field_note">Note</label>
+            <textarea class="form-control" name="note" id="field_note"
+                [(ngModel)]="feedback.note" ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.feedback.repliedTo" for="field_repliedTo">Replied To</label>
+            <select class="form-control" id="field_repliedTo" name="repliedTo" [(ngModel)]="feedback.repliedTo" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="feedbackOption.id === feedback.repliedTo?.id ? feedback.repliedTo : feedbackOption" *ngFor="let feedbackOption of feedbacks; trackBy: trackFeedbackById">{{feedbackOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.feedback.timesheet" for="field_timesheet">Timesheet</label>
+            <select class="form-control" id="field_timesheet" name="timesheet" [(ngModel)]="feedback.timesheet" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="timesheetOption.id === feedback.timesheet?.id ? feedback.timesheet : timesheetOption" *ngFor="let timesheetOption of timesheets; trackBy: trackTimesheetById">{{timesheetOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="timesheetApp.feedback.createdBy" for="field_createdBy">Created By</label>
+            <select class="form-control" id="field_createdBy" name="createdBy" [(ngModel)]="feedback.createdBy" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === feedback.createdBy?.id ? feedback.createdBy : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

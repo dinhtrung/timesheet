@@ -1,0 +1,28 @@
+{
+    "timesheetApp": {
+        "timesheet" : {
+            "home": {
+                "title": "Timesheets",
+                "createLabel": "创建新 Timesheet",
+                "createOrEditLabel": "创建或编辑 Timesheet"
+            },
+            "created": "Timesheet {{ param }} 创建成功",
+            "updated": "Timesheet {{ param }} 更新成功",
+            "deleted": "Timesheet {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Timesheet {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Timesheet"
+            },
+            "approvedAt": "Approved At",
+            "approvalNote": "Approval Note",
+            "year": "Year",
+            "week": "Week",
+            "state": "State",
+            "comment": "Comment",
+            "owner": "Owner",
+            "approvedBy": "Approved By"
+        }
+    }
+}

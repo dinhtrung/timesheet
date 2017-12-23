@@ -1,0 +1,31 @@
+{
+    "timesheetApp": {
+        "leaveRequest" : {
+            "home": {
+                "title": "Leave Requests",
+                "createLabel": "Leave Request erstellen",
+                "createOrEditLabel": "Leave Request erstellen oder bearbeiten"
+            },
+            "created": "Leave Request erstellt mit ID {{ param }}",
+            "updated": "Leave Request aktualisiert mit ID {{ param }}",
+            "deleted": "Leave Request gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Leave Request {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Leave Request"
+            },
+            "name": "Name",
+            "note": "Note",
+            "allDay": "All Day",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "number": "Number",
+            "state": "State",
+            "updatedAt": "Updated At",
+            "approvalNote": "Approval Note",
+            "owner": "Owner",
+            "approvedBy": "Approved By"
+        }
+    }
+}

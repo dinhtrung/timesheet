@@ -1,0 +1,23 @@
+{
+    "timesheetApp": {
+        "jobCode" : {
+            "home": {
+                "title": "Job Codes",
+                "createLabel": "Thêm mới một Job Code",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Job Code"
+            },
+            "created": "Một Job Code mới được tạo với định danh {{ param }}",
+            "updated": "Một Job Code cập nhật với định danh {{ param }}",
+            "deleted": "Một Job Code đã xóa với định danh {{ param }}",
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Job Code {{ id }}?"
+            },
+            "detail": {
+                "title": "Job Code"
+            },
+            "name": "Name",
+            "description": "Description",
+            "users": "Users"
+        }
+    }
+}

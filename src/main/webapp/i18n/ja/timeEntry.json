@@ -1,0 +1,25 @@
+{
+    "timesheetApp": {
+        "timeEntry" : {
+            "home": {
+                "title": "TimeEntries",
+                "createLabel": "Time Entry を追加",
+                "createOrEditLabel": "Time Entryを追加または編集"
+            },
+            "created": "A new Time Entry is created with identifier {{ param }}",
+            "updated": "A Time Entry is updated with identifier {{ param }}",
+            "deleted": "A Time Entry is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Time Entry {{ id }}を削除してもよろしいですか？"
+            },
+            "detail": {
+                "title": "Time Entry"
+            },
+            "date": "Date",
+            "duration": "Duration",
+            "description": "Description",
+            "timesheet": "Timesheet",
+            "jobCode": "Job Code"
+        }
+    }
+}

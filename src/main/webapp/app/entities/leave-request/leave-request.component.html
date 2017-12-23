@@ -1,0 +1,91 @@
+<div>
+    <h2>
+        <span jhiTranslate="timesheetApp.leaveRequest.home.title">Leave Requests</span>
+        <button class="btn btn-primary float-right jh-create-entity create-leave-request" [routerLink]="['/', { outlets: { popup: ['leave-request-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="timesheetApp.leaveRequest.home.createLabel">
+            Create new Leave Request
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="leaveRequests">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="timesheetApp.leaveRequest.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="note"><span jhiTranslate="timesheetApp.leaveRequest.note">Note</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="allDay"><span jhiTranslate="timesheetApp.leaveRequest.allDay">All Day</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="startDate"><span jhiTranslate="timesheetApp.leaveRequest.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="endDate"><span jhiTranslate="timesheetApp.leaveRequest.endDate">End Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="number"><span jhiTranslate="timesheetApp.leaveRequest.number">Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="state"><span jhiTranslate="timesheetApp.leaveRequest.state">State</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updatedAt"><span jhiTranslate="timesheetApp.leaveRequest.updatedAt">Updated At</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="approvalNote"><span jhiTranslate="timesheetApp.leaveRequest.approvalNote">Approval Note</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="owner.id"><span jhiTranslate="timesheetApp.leaveRequest.owner">Owner</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="approvedBy.id"><span jhiTranslate="timesheetApp.leaveRequest.approvedBy">Approved By</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let leaveRequest of leaveRequests ;trackBy: trackId">
+                <td><a [routerLink]="['../leave-request', leaveRequest.id ]">{{leaveRequest.id}}</a></td>
+                <td>{{leaveRequest.name}}</td>
+                <td>{{leaveRequest.note}}</td>
+                <td>{{leaveRequest.allDay}}</td>
+                <td>{{leaveRequest.startDate | date:'medium'}}</td>
+                <td>{{leaveRequest.endDate | date:'medium'}}</td>
+                <td>{{leaveRequest.number}}</td>
+                <td jhiTranslate="{{'timesheetApp.ReviewState.' + leaveRequest.state}}">{{leaveRequest.state}}</td>
+                <td>{{leaveRequest.updatedAt | date:'medium'}}</td>
+                <td>{{leaveRequest.approvalNote}}</td>
+                <td>
+                    {{leaveRequest.owner?.id}}
+                </td>
+                <td>
+                    {{leaveRequest.approvedBy?.id}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../leave-request', leaveRequest.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'leave-request/'+ leaveRequest.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'leave-request/'+ leaveRequest.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Pager is not implemented yet, so this is normal pagination instead -->
+    <div *ngIf="leaveRequests && leaveRequests.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

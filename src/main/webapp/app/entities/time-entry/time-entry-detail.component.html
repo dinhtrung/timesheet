@@ -1,0 +1,46 @@
+
+<div *ngIf="timeEntry">
+    <h2><span jhiTranslate="timesheetApp.timeEntry.detail.title">Time Entry</span> {{timeEntry.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="timesheetApp.timeEntry.date">Date</span></dt>
+        <dd>
+            <span>{{timeEntry.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.timeEntry.duration">Duration</span></dt>
+        <dd>
+            <span>{{timeEntry.duration}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.timeEntry.description">Description</span></dt>
+        <dd>
+            <span>{{timeEntry.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.timeEntry.timesheet">Timesheet</span></dt>
+        <dd>
+            <div *ngIf="timeEntry.timesheet">
+                <a [routerLink]="['/timesheet', timeEntry.timesheet?.id]">{{timeEntry.timesheet?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.timeEntry.jobCode">Job Code</span></dt>
+        <dd>
+            <div *ngIf="timeEntry.jobCode">
+                <a [routerLink]="['/job-code', timeEntry.jobCode?.id]">{{timeEntry.jobCode?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'time-entry/'+ timeEntry.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -7,6 +7,13 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entitäten",
+                "jobCode": "Job Code",
+                "leaveRequest": "Leave Request",
+                "meetingInvitation": "Meeting Invitation",
+                "meeting": "Meeting",
+                "timeEntry": "Time Entry",
+                "timesheet": "Timesheet",
+                "feedback": "Feedback",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

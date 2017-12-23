@@ -1,0 +1,25 @@
+{
+    "timesheetApp": {
+        "timeEntry" : {
+            "home": {
+                "title": "Time Entries",
+                "createLabel": "Time Entry erstellen",
+                "createOrEditLabel": "Time Entry erstellen oder bearbeiten"
+            },
+            "created": "Time Entry erstellt mit ID {{ param }}",
+            "updated": "Time Entry aktualisiert mit ID {{ param }}",
+            "deleted": "Time Entry gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Time Entry {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Time Entry"
+            },
+            "date": "Date",
+            "duration": "Duration",
+            "description": "Description",
+            "timesheet": "Timesheet",
+            "jobCode": "Job Code"
+        }
+    }
+}

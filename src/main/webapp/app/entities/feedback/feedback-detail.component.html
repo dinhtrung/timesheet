@@ -1,0 +1,50 @@
+
+<div *ngIf="feedback">
+    <h2><span jhiTranslate="timesheetApp.feedback.detail.title">Feedback</span> {{feedback.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="timesheetApp.feedback.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{feedback.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.feedback.name">Name</span></dt>
+        <dd>
+            <span>{{feedback.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.feedback.note">Note</span></dt>
+        <dd>
+            <span>{{feedback.note}}</span>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.feedback.repliedTo">Replied To</span></dt>
+        <dd>
+            <div *ngIf="feedback.repliedTo">
+                <a [routerLink]="['/feedback', feedback.repliedTo?.id]">{{feedback.repliedTo?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.feedback.timesheet">Timesheet</span></dt>
+        <dd>
+            <div *ngIf="feedback.timesheet">
+                <a [routerLink]="['/timesheet', feedback.timesheet?.id]">{{feedback.timesheet?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="timesheetApp.feedback.createdBy">Created By</span></dt>
+        <dd>
+            {{feedback.createdBy?.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'feedback/'+ feedback.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
