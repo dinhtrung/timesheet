@@ -1,6 +1,8 @@
 package com.ft.repository;
 
 import com.ft.domain.Timesheet;
+import com.ft.domain.User;
+
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
@@ -18,5 +20,7 @@ public interface TimesheetRepository extends JpaRepository<Timesheet, Long>, Jpa
 
     @Query("select timesheet from Timesheet timesheet where timesheet.approvedBy.login = ?#{principal.username}")
     List<Timesheet> findByApprovedByIsCurrentUser();
+
+	Timesheet findOneByYearAndWeekAndOwner(int year, int i, User user);
 
 }

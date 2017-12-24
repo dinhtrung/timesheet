@@ -1,6 +1,9 @@
 package com.ft.service.dto;
 
 import java.io.Serializable;
+
+import com.ft.domain.User;
+
 import io.github.jhipster.service.filter.BooleanFilter;
 import io.github.jhipster.service.filter.DoubleFilter;
 import io.github.jhipster.service.filter.Filter;
@@ -33,6 +36,8 @@ public class TimeEntryCriteria implements Serializable {
     private DoubleFilter duration;
 
     private LongFilter timesheetId;
+
+    private Filter<User> timesheetOwner = new Filter<User>();
 
     private LongFilter jobCodeId;
 
@@ -67,6 +72,14 @@ public class TimeEntryCriteria implements Serializable {
         return timesheetId;
     }
 
+    public Filter<User> getTimesheetOwner() {
+        return timesheetOwner;
+    }
+
+    public void setTimesheetOwner(Filter<User> timesheetOwner) {
+		this.timesheetOwner = timesheetOwner;
+	}
+
     public void setTimesheetId(LongFilter timesheetId) {
         this.timesheetId = timesheetId;
     }
@@ -89,5 +102,4 @@ public class TimeEntryCriteria implements Serializable {
                 (jobCodeId != null ? "jobCodeId=" + jobCodeId + ", " : "") +
             "}";
     }
-
 }

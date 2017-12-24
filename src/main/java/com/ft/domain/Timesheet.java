@@ -7,7 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoField;
 import java.util.Objects;
 
 import com.ft.domain.enumeration.ReviewState;
@@ -168,6 +170,12 @@ public class Timesheet implements Serializable {
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
+    public LocalDate getFirstDate() {
+    	return LocalDate.now().withYear(this.year).with(ChronoField.ALIGNED_WEEK_OF_YEAR, this.week).with(ChronoField.DAY_OF_WEEK, 1);
+    }
+    public LocalDate getLastDate() {
+    	return LocalDate.now().withYear(this.year).with(ChronoField.ALIGNED_WEEK_OF_YEAR, this.week).with(ChronoField.DAY_OF_WEEK, 7);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -1,16 +1,24 @@
 package com.ft.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.ft.domain.Authority;
 import com.ft.domain.Timesheet;
+import com.ft.domain.User;
+import com.ft.domain.enumeration.ReviewState;
+import com.ft.security.AuthoritiesConstants;
 import com.ft.service.TimesheetService;
+import com.ft.service.UserService;
 import com.ft.web.rest.errors.BadRequestAlertException;
 import com.ft.web.rest.util.HeaderUtil;
 import com.ft.web.rest.util.PaginationUtil;
 import com.ft.service.dto.TimesheetCriteria;
 import com.ft.service.TimesheetQueryService;
+
+import io.github.jhipster.service.filter.LongFilter;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +29,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +46,9 @@ public class TimesheetResource {
     private final TimesheetService timesheetService;
 
     private final TimesheetQueryService timesheetQueryService;
+
+    @Autowired
+    private UserService userService;
 
     public TimesheetResource(TimesheetService timesheetService, TimesheetQueryService timesheetQueryService) {
         this.timesheetService = timesheetService;
@@ -58,6 +68,13 @@ public class TimesheetResource {
         log.debug("REST request to save Timesheet : {}", timesheet);
         if (timesheet.getId() != null) {
             throw new BadRequestAlertException("A new timesheet cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        if (timesheet.getOwner() == null) {
+        	User currentUser = userService.getUserWithAuthorities().get();
+        	if (!currentUser.getAuthorities().contains(new Authority(AuthoritiesConstants.ADMIN))) {
+        		timesheet
+        		.owner(currentUser);
+        	}
         }
         Timesheet result = timesheetService.save(timesheet);
         return ResponseEntity.created(new URI("/api/timesheets/" + result.getId()))
@@ -81,6 +98,13 @@ public class TimesheetResource {
         if (timesheet.getId() == null) {
             return createTimesheet(timesheet);
         }
+        User currentUser = userService.getUserWithAuthorities().get();
+    	if (!currentUser.getAuthorities().contains(new Authority(AuthoritiesConstants.ADMIN))) {
+    		timesheet
+    			.owner(currentUser);
+    	} else if (timesheet.getApprovedBy() == null) {
+    		timesheet.approvedBy(currentUser);
+    	}
         Timesheet result = timesheetService.save(timesheet);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, timesheet.getId().toString()))
@@ -98,6 +122,11 @@ public class TimesheetResource {
     @Timed
     public ResponseEntity<List<Timesheet>> getAllTimesheets(TimesheetCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Timesheets by criteria: {}", criteria);
+        User currentUser = userService.getUserWithAuthorities().get();
+        log.debug("Only list entries of user " + currentUser);
+    	if (!currentUser.getAuthorities().contains(new Authority(AuthoritiesConstants.ADMIN))) {
+    		criteria.setOwnerId((LongFilter) new LongFilter().setEquals(currentUser.getId()));
+    	}
         Page<Timesheet> page = timesheetQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/timesheets");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);

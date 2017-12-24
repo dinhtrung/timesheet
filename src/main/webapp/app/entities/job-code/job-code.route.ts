@@ -32,7 +32,7 @@ export const jobCodeRoute: Routes = [
             'pagingParams': JobCodeResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_ADMIN'],
+            authorities: ['ROLE_USER'],
             pageTitle: 'timesheetApp.jobCode.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +40,7 @@ export const jobCodeRoute: Routes = [
         path: 'job-code/:id',
         component: JobCodeDetailComponent,
         data: {
-            authorities: ['ROLE_ADMIN'],
+            authorities: ['ROLE_USER'],
             pageTitle: 'timesheetApp.jobCode.home.title'
         },
         canActivate: [UserRouteAccessService]

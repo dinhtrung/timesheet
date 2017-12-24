@@ -24,7 +24,7 @@ export class TimeEntryPopupService {
                 resolve(this.ngbModalRef);
             }
 
-            if (id) {
+            if (Number.isInteger(id)) {
                 this.timeEntryService.find(id).subscribe((timeEntry) => {
                     if (timeEntry.date) {
                         timeEntry.date = {
@@ -36,6 +36,17 @@ export class TimeEntryPopupService {
                     this.ngbModalRef = this.timeEntryModalRef(component, timeEntry);
                     resolve(this.ngbModalRef);
                 });
+            } else if (id instanceof TimeEntry) {
+              const timeEntry = Object.assign(new TimeEntry(), id);
+              if (timeEntry.date) {
+                  timeEntry.date = {
+                      year: timeEntry.date.getFullYear(),
+                      month: timeEntry.date.getMonth() + 1,
+                      day: timeEntry.date.getDate()
+                  };
+              }
+              this.ngbModalRef = this.timeEntryModalRef(component, timeEntry);
+              resolve(this.ngbModalRef);
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {

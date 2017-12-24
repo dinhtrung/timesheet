@@ -30,7 +30,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let timesheet of timesheets ;trackBy: trackId">
-                <td><a [routerLink]="['../timesheet', timesheet.id ]">{{timesheet.id}}</a></td>
+                <td><a [routerLink]="['../timesheet', timesheet.id ]">{{timesheet.firstDate}} - {{timesheet.lastDate}}</a></td>
                 <td>{{timesheet.approvedAt | date:'medium'}}</td>
                 <td>{{timesheet.approvalNote}}</td>
                 <td>{{timesheet.year}}</td>

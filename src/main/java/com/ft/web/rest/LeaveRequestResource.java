@@ -1,8 +1,13 @@
 package com.ft.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.ft.domain.Authority;
 import com.ft.domain.LeaveRequest;
+import com.ft.domain.User;
+import com.ft.domain.enumeration.ReviewState;
+import com.ft.security.AuthoritiesConstants;
 import com.ft.service.LeaveRequestService;
+import com.ft.service.UserService;
 import com.ft.web.rest.errors.BadRequestAlertException;
 import com.ft.web.rest.util.HeaderUtil;
 import com.ft.web.rest.util.PaginationUtil;
@@ -11,6 +16,7 @@ import com.ft.service.LeaveRequestQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -20,7 +26,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +43,9 @@ public class LeaveRequestResource {
     private final LeaveRequestService leaveRequestService;
 
     private final LeaveRequestQueryService leaveRequestQueryService;
+
+    @Autowired
+    private UserService userService;
 
     public LeaveRequestResource(LeaveRequestService leaveRequestService, LeaveRequestQueryService leaveRequestQueryService) {
         this.leaveRequestService = leaveRequestService;
@@ -58,6 +66,10 @@ public class LeaveRequestResource {
         if (leaveRequest.getId() != null) {
             throw new BadRequestAlertException("A new leaveRequest cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        User currentUser = userService.getUserWithAuthorities().get();
+        leaveRequest
+        	.owner(currentUser)
+        	.state(ReviewState.PENDING);
         LeaveRequest result = leaveRequestService.save(leaveRequest);
         return ResponseEntity.created(new URI("/api/leave-requests/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -80,6 +92,15 @@ public class LeaveRequestResource {
         if (leaveRequest.getId() == null) {
             return createLeaveRequest(leaveRequest);
         }
+        User currentUser = userService.getUserWithAuthorities().get();
+        if (!currentUser.getAuthorities().contains(new Authority(AuthoritiesConstants.ADMIN))) {
+        	leaveRequest
+        		.owner(currentUser)
+        		.state(ReviewState.PENDING);
+    	} else {
+    		leaveRequest
+    			.approvedBy(currentUser);
+    	}
         LeaveRequest result = leaveRequestService.save(leaveRequest);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, leaveRequest.getId().toString()))

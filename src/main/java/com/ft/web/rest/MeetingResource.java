@@ -3,6 +3,7 @@ package com.ft.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.ft.domain.Meeting;
 import com.ft.service.MeetingService;
+import com.ft.service.UserService;
 import com.ft.web.rest.errors.BadRequestAlertException;
 import com.ft.web.rest.util.HeaderUtil;
 import com.ft.web.rest.util.PaginationUtil;
@@ -11,6 +12,7 @@ import com.ft.service.MeetingQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -38,6 +40,9 @@ public class MeetingResource {
     private final MeetingService meetingService;
 
     private final MeetingQueryService meetingQueryService;
+
+    @Autowired
+    private UserService userService;
 
     public MeetingResource(MeetingService meetingService, MeetingQueryService meetingQueryService) {
         this.meetingService = meetingService;

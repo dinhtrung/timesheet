@@ -1,6 +1,6 @@
 
 <div *ngIf="timesheet">
-    <h2><span jhiTranslate="timesheetApp.timesheet.detail.title">Timesheet</span> {{timesheet.id}}</h2>
+    <h2><span jhiTranslate="timesheetApp.timesheet.detail.title">Timesheet</span> {{timesheet.firstDate}} - {{ timesheet.lastDate}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">

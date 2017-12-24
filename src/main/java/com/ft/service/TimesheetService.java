@@ -1,7 +1,13 @@
 package com.ft.service;
 
 import com.ft.domain.Timesheet;
+import com.ft.domain.User;
 import com.ft.repository.TimesheetRepository;
+
+import java.time.LocalDate;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -69,4 +75,19 @@ public class TimesheetService {
         log.debug("Request to delete Timesheet : {}", id);
         timesheetRepository.delete(id);
     }
+
+	public Timesheet findOrCreateTimesheet(LocalDate date, User user) {
+		WeekFields weekFields = WeekFields.of(Locale.getDefault());
+		int weekOfYear = date.get(weekFields.weekOfWeekBasedYear());
+		Timesheet result = timesheetRepository.findOneByYearAndWeekAndOwner(date.getYear(), weekOfYear, user);
+		if (result == null) {
+			result = timesheetRepository.save(new Timesheet()
+					.owner(user)
+					.year(date.getYear())
+					.week(weekOfYear)
+			);
+		}
+		return result;
+
+	}
 }

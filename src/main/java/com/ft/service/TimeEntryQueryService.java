@@ -81,6 +81,9 @@ public class TimeEntryQueryService extends QueryService<TimeEntry> {
             if (criteria.getTimesheetId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getTimesheetId(), TimeEntry_.timesheet, Timesheet_.id));
             }
+            if (criteria.getTimesheetOwner() != null) {
+                specification = specification.and(buildReferringEntitySpecification(criteria.getTimesheetOwner(), TimeEntry_.timesheet, Timesheet_.owner));
+            }
             if (criteria.getJobCodeId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getJobCodeId(), TimeEntry_.jobCode, JobCode_.id));
             }

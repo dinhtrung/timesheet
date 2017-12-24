@@ -2,6 +2,7 @@ package com.ft.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.ft.domain.JobCode;
+import com.ft.security.AuthoritiesConstants;
 import com.ft.service.JobCodeService;
 import com.ft.web.rest.errors.BadRequestAlertException;
 import com.ft.web.rest.util.HeaderUtil;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -53,6 +55,7 @@ public class JobCodeResource {
      */
     @PostMapping("/job-codes")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<JobCode> createJobCode(@RequestBody JobCode jobCode) throws URISyntaxException {
         log.debug("REST request to save JobCode : {}", jobCode);
         if (jobCode.getId() != null) {
@@ -75,6 +78,7 @@ public class JobCodeResource {
      */
     @PutMapping("/job-codes")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<JobCode> updateJobCode(@RequestBody JobCode jobCode) throws URISyntaxException {
         log.debug("REST request to update JobCode : {}", jobCode);
         if (jobCode.getId() == null) {
@@ -124,6 +128,7 @@ public class JobCodeResource {
      */
     @DeleteMapping("/job-codes/{id}")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<Void> deleteJobCode(@PathVariable Long id) {
         log.debug("REST request to delete JobCode : {}", id);
         jobCodeService.delete(id);

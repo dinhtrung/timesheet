@@ -17,6 +17,9 @@ export class Timesheet implements BaseEntity {
         public comment?: any,
         public owner?: User,
         public approvedBy?: User,
+        // Extra attributes
+        public firstDate?: any,
+        public lastDate?: any,
     ) {
     }
 }

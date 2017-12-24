@@ -15,6 +15,8 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 import java.security.Principal;
 import java.time.Instant;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static com.ft.config.WebsocketConfiguration.IP_ADDRESS;
 
 @Controller

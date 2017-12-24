@@ -33,7 +33,7 @@
                 [(ngModel)]="timeEntry.description" ></textarea>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" *jhiHasAnyAuthority="'ROLE_ADMIN'">
             <label class="form-control-label" jhiTranslate="timesheetApp.timeEntry.timesheet" for="field_timesheet">Timesheet</label>
             <select class="form-control" id="field_timesheet" name="timesheet" [(ngModel)]="timeEntry.timesheet" >
                 <option [ngValue]="null"></option>

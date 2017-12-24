@@ -3,6 +3,7 @@ package com.ft.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.ft.domain.MeetingInvitation;
 import com.ft.service.MeetingInvitationService;
+import com.ft.service.UserService;
 import com.ft.web.rest.errors.BadRequestAlertException;
 import com.ft.web.rest.util.HeaderUtil;
 import com.ft.web.rest.util.PaginationUtil;
@@ -11,6 +12,7 @@ import com.ft.service.MeetingInvitationQueryService;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -38,6 +40,9 @@ public class MeetingInvitationResource {
     private final MeetingInvitationService meetingInvitationService;
 
     private final MeetingInvitationQueryService meetingInvitationQueryService;
+
+    @Autowired
+    private UserService userService;
 
     public MeetingInvitationResource(MeetingInvitationService meetingInvitationService, MeetingInvitationQueryService meetingInvitationQueryService) {
         this.meetingInvitationService = meetingInvitationService;
