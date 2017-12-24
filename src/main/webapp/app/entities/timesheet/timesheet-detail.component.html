@@ -3,41 +3,46 @@
     <h2><span jhiTranslate="timesheetApp.timesheet.detail.title">Timesheet</span> {{timesheet.firstDate}} - {{ timesheet.lastDate}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="timesheetApp.timesheet.approvedAt">Approved At</span></dt>
-        <dd>
-            <span>{{timesheet.approvedAt | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="timesheetApp.timesheet.approvalNote">Approval Note</span></dt>
-        <dd>
-            <span>{{timesheet.approvalNote}}</span>
-        </dd>
-        <dt><span jhiTranslate="timesheetApp.timesheet.year">Year</span></dt>
-        <dd>
-            <span>{{timesheet.year}}</span>
-        </dd>
-        <dt><span jhiTranslate="timesheetApp.timesheet.week">Week</span></dt>
-        <dd>
-            <span>{{timesheet.week}}</span>
-        </dd>
-        <dt><span jhiTranslate="timesheetApp.timesheet.state">State</span></dt>
-        <dd>
-            <span jhiTranslate="{{'timesheetApp.ReviewState.' + timesheet.state}}">{{timesheet.state}}</span>
-        </dd>
-        <dt><span jhiTranslate="timesheetApp.timesheet.comment">Comment</span></dt>
-        <dd>
-            <span>{{timesheet.comment}}</span>
-        </dd>
-        <dt><span jhiTranslate="timesheetApp.timesheet.owner">Owner</span></dt>
-        <dd>
-            {{timesheet.owner?.id}}
-        </dd>
-        <dt><span jhiTranslate="timesheetApp.timesheet.approvedBy">Approved By</span></dt>
-        <dd>
-            {{timesheet.approvedBy?.id}}
-        </dd>
-    </dl>
-
+    <div class="row"><div class="col-md-3">
+      <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="timesheetApp.timesheet.approvedAt">Approved At</span></dt>
+          <dd>
+              <span>{{timesheet.approvedAt | date:'medium'}}</span>
+          </dd>
+          <dt><span jhiTranslate="timesheetApp.timesheet.approvalNote">Approval Note</span></dt>
+          <dd>
+              <span>{{timesheet.approvalNote}}</span>
+          </dd>
+          <dt><span jhiTranslate="timesheetApp.timesheet.year">Year</span></dt>
+          <dd>
+              <span>{{timesheet.year}}</span>
+          </dd>
+          <dt><span jhiTranslate="timesheetApp.timesheet.week">Week</span></dt>
+          <dd>
+              <span>{{timesheet.week}}</span>
+          </dd>
+          <dt><span jhiTranslate="timesheetApp.timesheet.state">State</span></dt>
+          <dd>
+              <span jhiTranslate="{{'timesheetApp.ReviewState.' + timesheet.state}}">{{timesheet.state}}</span>
+          </dd>
+          <dt><span jhiTranslate="timesheetApp.timesheet.comment">Comment</span></dt>
+          <dd>
+              <span>{{timesheet.comment}}</span>
+          </dd>
+          <dt><span jhiTranslate="timesheetApp.timesheet.owner">Owner</span></dt>
+          <dd>
+              {{timesheet.owner?.id}}
+          </dd>
+          <dt><span jhiTranslate="timesheetApp.timesheet.approvedBy">Approved By</span></dt>
+          <dd>
+              {{timesheet.approvedBy?.id}}
+          </dd>
+      </dl>
+    </div><div class="col-md-9">
+      <ul class="list-group">
+        <li *ngFor="let entry of timeEntryService.entities" class="list-group-item">{{ entry.description }} <span class="badge badge-info pull-right">{{ entry.duration }}</span></li>
+      </ul>
+    </div></div>
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">

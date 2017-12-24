@@ -5,6 +5,8 @@ import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 
 import { Timesheet } from './timesheet.model';
 import { TimesheetService } from './timesheet.service';
+// Pull related timeEntry
+import { TimeEntry, TimeEntryService } from '../time-entry';
 
 @Component({
     selector: 'jhi-timesheet-detail',
@@ -17,6 +19,7 @@ export class TimesheetDetailComponent implements OnInit, OnDestroy {
     private eventSubscriber: Subscription;
 
     constructor(
+        public timeEntryService: TimeEntryService,
         private eventManager: JhiEventManager,
         private dataUtils: JhiDataUtils,
         private timesheetService: TimesheetService,
@@ -27,6 +30,7 @@ export class TimesheetDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
+            this.loadEntries(params['id']);
         });
         this.registerChangeInTimesheets();
     }
@@ -35,6 +39,10 @@ export class TimesheetDetailComponent implements OnInit, OnDestroy {
         this.timesheetService.find(id).subscribe((timesheet) => {
             this.timesheet = timesheet;
         });
+    }
+    loadEntries(id) {
+      this.timeEntryService.query({ search: { 'timesheetId.equals' : id }})
+      .subscribe((entries) => this.timeEntryService.entities = entries.json);
     }
     byteSize(field) {
         return this.dataUtils.byteSize(field);

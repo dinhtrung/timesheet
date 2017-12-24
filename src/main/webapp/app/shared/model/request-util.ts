@@ -11,6 +11,9 @@ export const createRequestOption = (req?: any): BaseRequestOptions => {
         }
         params.set('query', req.query);
         params.set('filter', req.filter);
+        if (req.search) {
+          Object.getOwnPropertyNames(req.search).forEach((k) => params.set(k, req.search[k]));
+        }
 
         options.params = params;
     }
