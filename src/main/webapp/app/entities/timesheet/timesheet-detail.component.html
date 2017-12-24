@@ -39,8 +39,9 @@
           </dd>
       </dl>
     </div><div class="col-md-9">
+      <p class="text-info">Total Time Spent: {{ timeEntryService.totalHours | number }} minutes</p>
       <ul class="list-group">
-        <li *ngFor="let entry of timeEntryService.entities" class="list-group-item">{{ entry.description }} <span class="badge badge-info pull-right">{{ entry.duration }}</span></li>
+        <li *ngFor="let entry of timeEntryService.entities" class="list-group-item"><strong>{{ entry.date | date:'mediumDate' }}</strong>: {{ entry.description }} <span class="badge badge-info pull-right">{{ entry.duration }}</span></li>
       </ul>
     </div></div>
     <button type="submit"

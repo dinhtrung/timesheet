@@ -104,7 +104,7 @@ public class TimeEntryResource {
         log.debug("Only list entries of user " + currentUser);
         Timesheet timesheet = timesheetService.findOrCreateTimesheet(timeEntry.getDate(), currentUser);
     	if (!currentUser.getAuthorities().contains(new Authority(AuthoritiesConstants.ADMIN))) {
-    		if (timesheet.getState().equals(ReviewState.APPROVED)) throw new Exception("You are not allowed to update an Approved timesheet");
+    		if ((timesheet.getState() != null) && timesheet.getState().equals(ReviewState.APPROVED)) throw new Exception("You are not allowed to update an Approved timesheet");
     		timeEntry.timesheet(timesheet);
     	}
         TimeEntry result = timeEntryService.save(timeEntry);

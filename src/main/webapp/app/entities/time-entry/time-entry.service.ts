@@ -15,6 +15,7 @@ export class TimeEntryService {
     public entity: TimeEntry;
     public entities: TimeEntry[] = [];
     public entityMap: any = {};
+    public totalHours: number;
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
     create(timeEntry: TimeEntry): Observable<TimeEntry> {

@@ -42,7 +42,11 @@ export class TimesheetDetailComponent implements OnInit, OnDestroy {
     }
     loadEntries(id) {
       this.timeEntryService.query({ search: { 'timesheetId.equals' : id }})
-      .subscribe((entries) => this.timeEntryService.entities = entries.json);
+      .subscribe((entries) => {
+        this.timeEntryService.totalHours = 0;
+        this.timeEntryService.entities = entries.json;
+        entries.json.forEach((k) => this.timeEntryService.totalHours += k.duration );
+      });
     }
     byteSize(field) {
         return this.dataUtils.byteSize(field);

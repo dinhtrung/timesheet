@@ -12,11 +12,10 @@
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="timeEntry.id" readonly />
         </div>
-        <div class="form-group">
+        <div class="form-group" [hidden]="timeEntry.date">
             <label class="form-control-label" jhiTranslate="timesheetApp.timeEntry.date" for="field_date">Date</label>
             <div class="input-group">
-                <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="timeEntry.date"
-                />
+                <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="timeEntry.date" />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><i class="fa fa-calendar"></i></button>
                 </span>
